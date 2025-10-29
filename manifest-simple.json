@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Lasso - Simple Email Monitor",
+  "version": "1.0.0",
+  "description": "Simple email detection for ChatGPT prompts",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "*://chat.openai.com/*",
+    "*://chatgpt.com/*"
+  ],
+  "background": {
+    "service_worker": "simple-background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://chat.openai.com/*",
+        "*://chatgpt.com/*"
+      ],
+      "js": ["simple-content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_title": "Lasso Email Monitor"
+  }
+}

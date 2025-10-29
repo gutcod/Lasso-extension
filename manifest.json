@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Lasso",
+  "version": "1.0.0",
+  "description": "Detects and captures emails from ChatGPT conversations",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "*://chat.openai.com/*",
+    "*://chatgpt.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://chat.openai.com/*",
+        "*://chatgpt.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_title": "Lasso",
+    "default_popup": "index.html"
+  }
+}
